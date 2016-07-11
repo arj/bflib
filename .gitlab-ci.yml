@@ -1,0 +1,16 @@
+build:clang:
+  stage: build
+  artifacts:
+    paths:
+    - build/
+    expire_in: 1 week
+  script:
+    - export CC=clang-3.9 export CXX=clang++-3.9
+    - mkdir -vp build/ && cd build && cmake ../ && make
+
+test:clang:
+  stage: test
+  dependencies:
+    - build:clang
+  script:
+    - cd build/ && make test
