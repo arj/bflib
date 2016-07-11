@@ -3,13 +3,13 @@
 
 #include <vector>
 #include <memory>
+#include <functional>
 
 namespace bf {
 
     template <class T>
     class tree {
     public:
-        typedef tree<T> tree_type;
         typedef T value_type;
         typedef value_type& reference;
         typedef const value_type& const_reference;
@@ -20,12 +20,7 @@ namespace bf {
         //! Create a new tree node with a given value and a parent.
         //! \param value  The value of the node (copied).
         //! \param parent A pointer to the tree node's parent.
-        tree(const value_type& value, std::weak_ptr<tree_type> parent);
-
-        //! Create a new tree node with a given value and a parent.
-        //! \param value  The value of the node (copied).
-        //! \param parent A pointer to the tree node's parent.
-        tree(const value_type& value, std::shared_ptr<tree_type> parent);
+        tree(const value_type& value, tree<T>* parent);
 
         virtual ~tree() = default;
 
@@ -33,12 +28,18 @@ namespace bf {
 
         const_reference value() const;
 
+        //! Adds a child and sets the parent value of the child to this.
+        tree<T>* add_child(const value_type& value);
+
+        //! Get all children.
+        std::vector<std::reference_wrapper<tree<T>>> children();
+
     private:
         value_type value_;
 
-        std::weak_ptr<tree_type> parent_;
+        tree<T>* parent_;
 
-        std::vector<std::unique_ptr<tree_type>> children_;
+        std::vector<std::unique_ptr<tree<T>>> children_;
     };
 }
 

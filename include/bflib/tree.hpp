@@ -14,15 +14,7 @@ namespace bf {
     }
 
     template <class T>
-    tree<T>::tree(const T& value, std::weak_ptr<tree<T>> parent)
-        : value_(value)
-        , parent_(parent)
-        , children_()
-    {
-    }
-
-    template <class T>
-    tree<T>::tree(const T& value, std::shared_ptr<tree<T>> parent)
+    tree<T>::tree(const T& value, tree<T>* parent)
         : value_(value)
         , parent_(parent)
         , children_()
@@ -39,6 +31,26 @@ namespace bf {
     typename tree<T>::const_reference tree<T>::value() const
     {
         return this->value_;
+    }
+
+    template <class T>
+    tree<T>* tree<T>::add_child(const value_type& value)
+    {
+        // TODO Use allocator!
+        tree<T>* child = new tree<T>(value, this);
+        children_.emplace_back(child);
+        return child;
+    }
+
+    template <class T>
+    std::vector<std::reference_wrapper<tree<T>>> tree<T>::children()
+    {
+        std::vector<std::reference_wrapper<tree<T>>> result;
+        for (auto& child : children_) {
+            result.push_back(*child);
+        }
+
+        return result;
     }
 }
 
