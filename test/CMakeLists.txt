@@ -9,6 +9,7 @@ if (GTEST_FOUND)
     set (TEST_SOURCE
         test.cpp
         tree_test.cpp
+        fft_test.cpp
         )
 
     add_executable(${PROJECT_NAME} ${TEST_SOURCE})
