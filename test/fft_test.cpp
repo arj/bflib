@@ -6,11 +6,6 @@ TEST(FFT, fft) {
 
     bf::fft(inout);
 
-    std::cout << "Result" << std::endl;
-    for (int i=0; i<inout.size(); ++i) {
-        std::cout << inout[i] << std::endl;
-    }
-
     std::valarray<std::complex<double>> expected = {
         std::complex<double>(4,0),
         std::complex<double>(1,-2.41421),
