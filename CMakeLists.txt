@@ -7,8 +7,10 @@ set (CMAKE_CXX_STANDARD 14)
 set (SOURCE
      include/bflib/tree.h
      include/bflib/tree.hpp
+     include/bflib/filter.h
      include/bflib/fft.h
 
+     lib/filter.cpp
      lib/fft.cpp
 )
 
