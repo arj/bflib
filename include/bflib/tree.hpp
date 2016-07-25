@@ -14,7 +14,15 @@ namespace bf {
     }
 
     template <class T>
-    tree<T>::tree(const T& value, tree<T>* parent)
+    tree<T>::tree(const T& value, const tree<T>& parent)
+        : value_(value)
+        , parent_(parent.get_shared_ptr())
+        , children_()
+    {
+    }
+
+    template <class T>
+    tree<T>::tree(const T& value, const std::shared_ptr<tree<T>>& parent)
         : value_(value)
         , parent_(parent)
         , children_()
@@ -34,10 +42,10 @@ namespace bf {
     }
 
     template <class T>
-    tree<T>* tree<T>::add_child(const value_type& value)
+    std::shared_ptr<tree<T>> tree<T>::add_child(const value_type& value)
     {
         // TODO Use allocator!
-        tree<T>* child = new tree<T>(value, this);
+        auto child = std::make_shared<tree<T>>(tree<T>(value, this->get_shared_ptr()));
         children_.emplace_back(child);
         return child;
     }
@@ -51,6 +59,33 @@ namespace bf {
         }
 
         return result;
+    }
+
+    template <class T>
+    std::shared_ptr<tree<T>> tree<T>::make_tree(const T& value)
+    {
+        tree<T>* t = new tree<T>(value);
+        return std::shared_ptr<tree<T>>(t);
+    }
+
+    template <class T>
+    std::shared_ptr<tree<T>> tree<T>::make_tree(const T& value, const tree<T>& parent)
+    {
+        tree<T>* t = new tree<T>(value, parent);
+        return std::shared_ptr<tree<T>>(t);
+    }
+
+    template <class T>
+    std::shared_ptr<tree<T>> tree<T>::make_tree(const T& value, const std::shared_ptr<tree<T>>& parent)
+    {
+        tree<T>* t = new tree<T>(value, parent);
+        return std::shared_ptr<tree<T>>(t);
+    }
+
+    template <class T>
+    std::shared_ptr<tree<T>> tree<T>::get_shared_ptr()
+    {
+        return this->shared_from_this();
     }
 }
 
