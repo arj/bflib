@@ -7,6 +7,15 @@
 
 namespace bf {
 
+    //! A path represents a path on the tree.
+    //!
+    //! A path is always specified backwards, i.e. the first path is the last item.
+    using tree_path = std::vector<unsigned int>;
+
+    //! Tree represents a non-modifiable tree.
+    //!
+    //! The tree is non-modifiable in the sense that its structure cannot be changed.
+    //! The values in the tree can be changed, however.
     template <class T>
     class tree : public std::enable_shared_from_this<tree<T>> {
     public:
@@ -26,12 +35,33 @@ namespace bf {
         //! Get all children.
         std::vector<std::reference_wrapper<tree<T>>> children();
 
+        //! Get the tree at a specific path
+        std::shared_ptr<tree<T>> get(const tree_path& path);
+
+        //! \return true if the tree is a leaf, i.e. it doesn't have children.
+        bool is_leaf() const;
+
+        //! Create a new tree node with a given value and a parent.
+        //! \param value  The value of the node (copied).
+        //! \param parent A pointer to the tree node's parent.
+        //! \return a shared_ptr to the new tree.
         static std::shared_ptr<tree<T>> make_tree(const value_type& value);
+
+        //! Create a new tree node with a given value and a parent.
+        //! \param value  The value of the node (copied).
+        //! \param parent A pointer to the tree node's parent.
+        //! \return a shared_ptr to the new tree.
         static std::shared_ptr<tree<T>> make_tree(const value_type& value, const tree<T>& parent);
+
+        //! Create a new tree node with a given value and a parent.
+        //! \param value  The value of the node (copied).
+        //! \param parent A pointer to the tree node's parent.
+        //! \return a shared_ptr to the new tree.
         static std::shared_ptr<tree<T>> make_tree(const value_type& value, const std::shared_ptr<tree<T>>& parent);
 
     private:
-        //! Create a new tree node with a given value
+        //! Create a new tree node with a given value.
+        //! \param value The value at the tree node (copied)
         tree(const value_type& value);
 
         //! Create a new tree node with a given value and a parent.

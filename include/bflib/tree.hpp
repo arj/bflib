@@ -62,6 +62,33 @@ namespace bf {
     }
 
     template <class T>
+    std::shared_ptr<tree<T>> tree<T>::get(const tree_path& path)
+    {
+        if (path.empty()) {
+            return this->get_shared_ptr();
+        }
+
+        auto i = path.back();
+
+        if (i >= children_.size()) {
+            std::stringstream msg;
+            msg << "Path " << i << " is not available in tree";
+            throw std::invalid_argument(msg.str());
+        }
+
+        tree_path new_path(path.begin(), path.end()-1);
+
+        // TODO As tail call optimization is not avaliable, while loop might be better
+        return children_[i]->get(new_path);
+    }
+
+    template <class T>
+    bool tree<T>::is_leaf() const
+    {
+        return children_.empty();
+    }
+
+    template <class T>
     std::shared_ptr<tree<T>> tree<T>::make_tree(const T& value)
     {
         tree<T>* t = new tree<T>(value);
