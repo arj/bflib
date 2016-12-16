@@ -60,6 +60,6 @@ namespace bflib {
     std::string reverse(const std::string& input);
 
     void reverse_inplace(std::string& input);
-};
+}
 
 #endif //BFLIB_STRINGS_UTILS_H

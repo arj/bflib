@@ -19,7 +19,7 @@ TEST(FFT, fft) {
 
     expected -= inout;
 
-    for (int i=0; i<expected.size(); ++i) {
+    for (size_t i=0; i < expected.size(); ++i) {
         ASSERT_LE(std::abs(expected[i]), 0.00001);
     }
 }

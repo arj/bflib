@@ -45,7 +45,7 @@ namespace bflib {
         std::string result;
         result.reserve(expected_size);
 
-        for (int i = 0; i < parts.size(); ++i) {
+        for (size_t i = 0; i < parts.size(); ++i) {
             result += parts[i];
 
             if (i + 1 < parts.size()) {
