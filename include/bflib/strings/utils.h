@@ -1,6 +1,9 @@
 #ifndef BFLIB_STRINGS_UTILS_H
 #define BFLIB_STRINGS_UTILS_H
 
+//! \file
+//! \brief String utilities
+
 #include <algorithm>
 #include <limits>
 #include <string>
@@ -10,7 +13,7 @@ namespace bflib {
 
     // TODO Check for strong exception guarantee!
 
-    //! Split a string by a list of delimiters into a list of strings.
+    //! \brief Split a string by a list of delimiters into a list of strings.
     std::vector<std::string> split(const std::string &input,
                                    const std::vector<std::string::value_type> &delimiters,
                                    bool keep_empty_parts = true,
