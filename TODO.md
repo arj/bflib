@@ -1,0 +1,2 @@
+- Signal processing
+  - Kalman filter (http://www.cs.unc.edu/~tracker/media/pdf/SIGGRAPH2001_CoursePack_08.pdf)

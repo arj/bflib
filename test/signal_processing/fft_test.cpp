@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <bflib/fft.h>
+#include <bflib/signal_processing/fft.h>
 
 TEST(FFT, fft) {
     std::valarray<std::complex<double>> inout = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0};

@@ -1,7 +1,7 @@
 #ifndef BFLIB_TREE_HPP_
 #define BFLIB_TREE_HPP_
 
-#include <bflib/tree.h>
+#include <bflib/container/tree.h>
 
 namespace bf {
 
@@ -71,9 +71,7 @@ namespace bf {
         auto i = path.back();
 
         if (i >= children_.size()) {
-            std::stringstream msg;
-            msg << "Path " << i << " is not available in tree";
-            throw std::invalid_argument(msg.str());
+            throw std::invalid_argument("Path element " + std::to_string(i) + " is not available in tree");
         }
 
         tree_path new_path(path.begin(), path.end()-1);

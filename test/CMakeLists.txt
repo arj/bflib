@@ -1,27 +1,38 @@
-project(bflib.test)
+set(TARGET bflib.test)
 
 find_package(GTest)
 
 if (GTEST_FOUND)
 
-    include_directories(${GTEST_INCLUDE_DIRS})
 
-    set (TEST_SOURCE
-        test.cpp
-        tree_test.cpp
-        filter_test.cpp
-        fft_test.cpp
-        )
+    set(SOURCES
+        algorithm/algorithms_test.cpp
 
-    add_executable(${PROJECT_NAME} ${TEST_SOURCE})
-    target_link_libraries(${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES} bf)
+        container/graph_test.cpp
+        container/tree_test.cpp
 
-    if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-        find_package (Threads)
-        target_link_libraries (${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
-    endif()
+        strings/utils_test.cpp
 
-    add_test(NAME ${PROJECT_NAME}
-             COMMAND ${PROJECT_NAME}
+        signal_processing/filter_test.cpp
+        signal_processing/fft_test.cpp
+
+        main.cpp
     )
-endif()
+
+    add_executable(${TARGET} ${SOURCES})
+
+    target_include_directories(${TARGET} PRIVATE ${GTEST_INCLUDE_DIRS})
+
+    target_link_libraries(${TARGET}
+            bflib
+            ${GTEST_BOTH_LIBRARIES})
+
+    if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+        find_package(Threads)
+        target_link_libraries(${TARGET} ${CMAKE_THREAD_LIBS_INIT})
+    endif ()
+
+    add_test(NAME ${TARGET}
+        COMMAND ${TARGET}
+    )
+ENDIF (GTEST_FOUND)

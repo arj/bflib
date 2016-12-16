@@ -1,4 +1,4 @@
-#include <bflib/filter.h>
+#include <bflib/signal_processing/filter.h>
 
 #include <cmath>
 

@@ -1,27 +1,53 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(bf)
+project(bflib)
 
-set (CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14)
 
-set (SOURCE
-     include/bflib/tree.h
-     include/bflib/tree.hpp
-     include/bflib/filter.h
-     include/bflib/fft.h
+set(TARGET bflib)
 
-     lib/filter.cpp
-     lib/fft.cpp
+set(HEADERS
+    include/bflib/algorithms/algorithms.h
+
+    include/bflib/strings/utils.h
+    include/bflib/strings/string.h
+
+    include/bflib/container/non_empty_vector.h
+    include/bflib/container/graph.h
+    include/bflib/container/tree.h
+    include/bflib/container/tree.hpp
+
+    include/bflib/contracts.h
+    include/bflib/utils.h
+
+    include/bflib/signal_processing/filter.h
+    include/bflib/signal_processing/fft.h
 )
 
-add_library(${PROJECT_NAME} ${SOURCE})
+set(CPP
+    src/strings/utils.cpp
+    src/strings/string.cpp
 
-set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+    src/signal_processing/filter.cpp
+    src/signal_processing/fft.cpp
+)
 
-target_include_directories(${PROJECT_NAME} PUBLIC
+set(SRC ${HEADERS} ${CPP})
+
+add_library(${TARGET} ${SRC})
+
+target_include_directories(${TARGET} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
     $<INSTALL_INTERFACE:include/bflib>
 )
 
+install(TARGETS ${TARGET}
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib)
+
+install(FILES ${HEADERS} DESTINATION include/bflib)
+
 enable_testing()
+
 add_subdirectory(test)

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <bflib/filter.h>
+#include <bflib/signal_processing/filter.h>
 #include <stdexcept>
 
 TEST(Filter, Coefficients) {

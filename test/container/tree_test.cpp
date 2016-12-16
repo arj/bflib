@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include <bflib/tree.h>
-#include <bflib/tree.hpp>
+#include <bflib/container/tree.h>
+#include <bflib/container/tree.hpp>
 #include <stdexcept>
 
 TEST(Tree, CtorAndValue) {

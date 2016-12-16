@@ -1,4 +1,4 @@
-#include <bflib/fft.h>
+#include <bflib/signal_processing/fft.h>
 
 #include <complex>
 #include <vector>
