@@ -70,3 +70,17 @@ TEST(IsSubset, EmptySetTest) {
     ASSERT_FALSE(bflib::is_subset(c, {}));
     ASSERT_TRUE(bflib::is_subset(std::set<int>{}, {}));
 }
+
+TEST(Sublist, FullList) {
+    std::vector<int> v {0,1,2,3,4,5,6};
+
+    ASSERT_EQ(v, bflib::sublist(v, 0, v.size()));
+
+    for (size_t i=0; i<v.size(); ++i) {
+        ASSERT_EQ(std::vector<int> {v[i]}, bflib::sublist(v, i, i+1));
+    }
+
+    ASSERT_EQ(std::vector<int>{}, bflib::sublist(v, 5, 5));
+
+    ASSERT_EQ((std::vector<int>{2,3,4}), bflib::sublist(v, 2, 5));
+}

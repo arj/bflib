@@ -190,6 +190,23 @@ namespace bflib {
     bool is_subset(const Container1& container1, const Unit& unit) {
         return container1.empty();
     }
+
+    //! \brief Extract a sublist from index from (inclusive) to index to (exclusive)
+    template <typename T>
+    std::vector<T> sublist(const std::vector<T>& input, size_t from, size_t to) {
+        if (from > to) {
+            throw std::invalid_argument("from > to");
+        }
+
+        std::vector<T> result;
+
+        auto from_it = input.begin() + from;
+        auto to_it = input.begin() + to;
+
+        std::copy(from_it, to_it, std::back_inserter(result));
+
+        return result;
+    }
 }
 
 #endif // BFLIB_ALGORITHMS_ALGORITHMS_H
