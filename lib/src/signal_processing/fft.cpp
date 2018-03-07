@@ -64,7 +64,8 @@ namespace bflib {
         // combine
         for (size_t k = 0; k < N/2; ++k)
         {
-            std::complex<double> t = std::polar(1.0, -2 * M_PI * k / N) * odd[k];
+            std::complex<double> t = std::polar(1.0, -2 * M_PI * k / N);
+            t = t * odd[k];
             inout[k    ] = even[k] + t;
             inout[k+N/2] = even[k] - t;
         }
@@ -79,7 +80,7 @@ namespace bflib {
         // forward fft
         fft(inout);
 
-        // conjugate the compleinout numbers again
+        // conjugate the complex inout numbers again
         inout = inout.apply(std::conj);
 
         // scale the numbers

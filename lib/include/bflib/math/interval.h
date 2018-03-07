@@ -10,7 +10,7 @@ namespace bflib
     class Interval
     {
     public:
-        static_assert(std::is_arithmetic<T>::value, "Interval must be instantiated with a arithmetic type");
+        static_assert(std::is_arithmetic<T>::value, "Interval must be instantiated with an arithmetic type");
 
         Interval(const T& left, const T& right)
             : m_left(left), m_right(right)
