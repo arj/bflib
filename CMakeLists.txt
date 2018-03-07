@@ -20,5 +20,6 @@ add_subdirectory(lib)
 enable_testing()
 
 if (BFLIB_BUILD_TESTS)
+    add_subdirectory(modules)
     add_subdirectory(test)
 endif()
