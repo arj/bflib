@@ -59,9 +59,9 @@ TEST(Statistics, NormalDistributionEstimation2) {
 
     auto estimated = bf::normal_distribution::ml_estimation(data);
 
-    ASSERT_NEAR(0.0, estimated.mean(), 0.01);
-    ASSERT_NEAR(1.0, estimated.standard_deviation(), 0.01);
-    ASSERT_NEAR(1.0, estimated.variance(), 0.01);
+    ASSERT_NEAR(0.0, estimated.mean(), 0.1);
+    ASSERT_NEAR(1.0, estimated.standard_deviation(), 0.1);
+    ASSERT_NEAR(1.0, estimated.variance(), 0.1);
 
     ASSERT_DOUBLE_EQ(0.5, estimated.cumulative_density(0.0));
 }

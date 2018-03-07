@@ -3,10 +3,6 @@
 #include <bflib/testing/ddmin.h>
 
 #include <list>
-#include <set>
-#include <unordered_set>
-#include <iostream>
-#include <vector>
 
 TEST(DdminSplit, Sublists) {
     std::vector<int> input {1,2,3,4,5,6,7,8,9,10};
@@ -93,14 +89,4 @@ TEST(DdminSplit, DdminCharList2) {
     std::cout << "Miminum input: ";
     bflib::print_vector(result);
     std::cout << std::endl;
-}
-
-TEST(DdminSplit, DdminFail) {
-    std::vector<int> input {1,2,3};
-
-    auto harness = [](const std::vector<int>& input){
-        return bflib::DDMinResult::PASS;
-    };
-
-    auto result = bflib::ddmin(input, harness);
 }
