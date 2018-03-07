@@ -2,6 +2,8 @@
 #define BFLIB_CONTRACTS_H
 
 #include <exception>
+#include <stdexcept>
+#include <string>
 
 namespace bflib {
 

@@ -1,22 +1,29 @@
 set(TARGET bflib)
 
 set(HEADERS
-    include/bflib/algorithms/algorithms.h
+        include/bflib/algorithms/algorithms.h
 
-    include/bflib/strings/utils.h
-    include/bflib/strings/string.h
+        include/bflib/strings/utils.h
+        include/bflib/strings/string.h
 
-    include/bflib/container/non_empty_vector.h
-    include/bflib/container/graph.h
-    include/bflib/container/tree.h
-    include/bflib/container/tree.hpp
+        include/bflib/container/non_empty_vector.h
+        include/bflib/container/graph.h
+        include/bflib/container/tree.h
+        include/bflib/container/tree.hpp
 
-    include/bflib/contracts.h
-    include/bflib/utils.h
+        include/bflib/contracts.h
+        include/bflib/utils.h
 
-    include/bflib/signal_processing/filter.h
-    include/bflib/signal_processing/fft.h
-)
+        include/bflib/signal_processing/filter.h
+        include/bflib/signal_processing/fft.h
+
+        include/bflib/testing/ddmin.h
+
+        include/bflib/statistics/normal_distribution.h
+
+        include/bflib/ml/estimator.h
+        include/bflib/ml/naive_bayes.h
+        )
 
 set(CPP
     src/strings/utils.cpp

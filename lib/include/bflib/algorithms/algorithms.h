@@ -4,6 +4,7 @@
 #include <bflib/utils.h>
 
 #include <vector>
+#include <set>
 #include <unordered_set>
 #include <algorithm>
 
@@ -204,6 +205,21 @@ namespace bflib {
         auto to_it = input.begin() + to;
 
         std::copy(from_it, to_it, std::back_inserter(result));
+
+        return result;
+    }
+
+    template <typename T>
+    std::vector<T> difference(const std::vector<T>& input1, const std::vector<T>& input2)
+    {
+        std::set<T> set1(input1.cbegin(), input1.cend());
+        std::set<T> set2(input2.cbegin(), input2.cend());
+
+        std::vector<T> result;
+
+        std::set_difference(set1.cbegin(), set1.cend(),
+                            set2.cbegin(), set2.cend(),
+                            std::back_inserter(result));
 
         return result;
     }

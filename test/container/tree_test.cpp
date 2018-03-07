@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 TEST(Tree, CtorAndValue) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     const auto& const_t = t;
 
@@ -13,7 +13,7 @@ TEST(Tree, CtorAndValue) {
 }
 
 TEST(Tree, SetAValueThroughReference) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     t->value() = 2;
 
@@ -21,15 +21,14 @@ TEST(Tree, SetAValueThroughReference) {
 }
 
 TEST(Tree, ChildrenTest) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     ASSERT_EQ(0u, t->children().size());
 
     auto t11 = t->add_child(11);
     auto t12 = t->add_child(12);
 
-    std::vector<std::reference_wrapper<bf::tree<int>>>
-        children = t->children();
+    std::vector<std::reference_wrapper<bflib::tree<int>>> children = t->children();
 
     ASSERT_EQ(2u, t->children().size());
     ASSERT_EQ(11, t->children().at(0).get().value());
@@ -37,7 +36,7 @@ TEST(Tree, ChildrenTest) {
 }
 
 TEST(Tree, LeafTest) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     auto t_child = t->add_child(11);
 
@@ -46,7 +45,7 @@ TEST(Tree, LeafTest) {
 }
 
 TEST(Tree, PathTest) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     auto t_child = t->add_child(11);
 
@@ -55,7 +54,7 @@ TEST(Tree, PathTest) {
 }
 
 TEST(Tree, InvalidPathTest) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     auto t_child = t->add_child(11);
 
@@ -65,7 +64,7 @@ TEST(Tree, InvalidPathTest) {
 TEST(Tree, PointerValueTest) {
     int i = 1;
 
-    auto t = bf::tree<int*>::make_tree(&i);
+    auto t = bflib::tree<int*>::make_tree(&i);
 
     ASSERT_EQ(i, *t->value());
 
@@ -75,7 +74,7 @@ TEST(Tree, PointerValueTest) {
 }
 
 TEST(Tree, SettingValueTest) {
-    auto t = bf::tree<int>::make_tree(1);
+    auto t = bflib::tree<int>::make_tree(1);
 
     ASSERT_EQ(1, t->value());
 

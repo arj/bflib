@@ -3,7 +3,7 @@
 #include <complex>
 #include <vector>
 
-namespace bf {
+namespace bflib {
 
     void fft(std::valarray<std::complex<double>>& inout)
     {

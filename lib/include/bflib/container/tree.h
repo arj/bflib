@@ -1,11 +1,11 @@
-#ifndef BFLIB_TREE_H_
-#define BFLIB_TREE_H_
+#ifndef BFLIB_CONTAINER_TREE_H_
+#define BFLIB_CONTAINER_TREE_H_
 
 #include <vector>
 #include <memory>
 #include <functional>
 
-namespace bf {
+namespace bflib {
 
     //! A path represents a path on the tree.
     //!
@@ -85,4 +85,4 @@ namespace bf {
     };
 }
 
-#endif // BFLIB_TREE_H_
+#endif // BFLIB_CONTAINER_TREE_H_

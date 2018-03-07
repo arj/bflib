@@ -1,9 +1,9 @@
-#ifndef BFLIB_TREE_HPP_
-#define BFLIB_TREE_HPP_
+#ifndef BFLIB_CONTAINER_TREE_HPP_
+#define BFLIB_CONTAINER_TREE_HPP_
 
 #include <bflib/container/tree.h>
 
-namespace bf {
+namespace bflib {
 
     template <class T>
     tree<T>::tree(const T& value)
@@ -114,4 +114,4 @@ namespace bf {
     }
 }
 
-#endif // BFLIB_TREE_HPP_
+#endif // BFLIB_CONTAINER_TREE_HPP_

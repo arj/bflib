@@ -15,8 +15,8 @@ namespace bflib {
         using InternalDataType = std::vector<T, Allocator>;
     public:
         // Member types
-        using value_type = InternalDataType::T;
-        using allocator_type = InternalDataType::Allocator;
+        using value_type = InternalDataType::value_type;
+        using allocator_type = InternalDataType::allocator_type;
         using size_type = InternalDataType::size_type;
         using difference_type = InternalDataType::difference_type;
         using value_type = InternalDataType::value_type;

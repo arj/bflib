@@ -6,18 +6,24 @@ if (GTEST_FOUND)
 
 
     set(SOURCES
-        algorithm/algorithms_test.cpp
+            algorithm/algorithms_test.cpp
 
-        container/graph_test.cpp
-        container/tree_test.cpp
+            container/graph_test.cpp
+            container/tree_test.cpp
 
-        strings/utils_test.cpp
+            strings/utils_test.cpp
 
-        signal_processing/filter_test.cpp
-        signal_processing/fft_test.cpp
+            signal_processing/filter_test.cpp
+            signal_processing/fft_test.cpp
 
-        main.cpp
-    )
+            testing/ddmin_test.cpp
+
+            ml/estimator_test.cpp
+
+            statistics/normal_distribution_test.cpp
+
+            main.cpp
+            )
 
     add_executable(${TARGET} ${SOURCES})
 

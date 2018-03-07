@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-namespace bf {
+namespace bflib {
 
     finite_impulse_response_filter::finite_impulse_response_filter(unsigned int number_of_coefficients)
         : ring_buffer_(number_of_coefficients, 0u)

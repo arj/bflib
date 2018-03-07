@@ -4,7 +4,7 @@
 TEST(FFT, fft) {
     std::valarray<std::complex<double>> inout = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0};
 
-    bf::fft(inout);
+    bflib::fft(inout);
 
     std::valarray<std::complex<double>> expected = {
         std::complex<double>(4,0),
@@ -27,8 +27,8 @@ TEST(FFT, fft) {
 TEST(FFT, ifft) {
     std::valarray<std::complex<double>> inout = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0};
 
-    bf::fft(inout);
-    bf::ifft(inout);
+    bflib::fft(inout);
+    bflib::ifft(inout);
 
     const double EPS = 0.0000001;
 

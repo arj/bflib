@@ -1,10 +1,10 @@
-#ifndef BFLIB_FILTER_H_
-#define BFLIB_FILTER_H_
+#ifndef BFLIB_SIGNAL_PROCESSING_FILTER_H_
+#define BFLIB_SIGNAL_PROCESSING_FILTER_H_
 
 #include <deque>
 #include <vector>
 
-namespace bf {
+namespace bflib {
 
     class finite_impulse_response_filter
     {
@@ -20,4 +20,4 @@ namespace bf {
 
 }
 
-#endif // BFLIB_TREE_H_
+#endif // BFLIB_SIGNAL_PROCESSING_TREE_H_
